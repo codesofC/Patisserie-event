@@ -9,19 +9,19 @@ import chefImg from "../public/assets/chef.png"
 const classroom = [
   {
     id: 1,
-    url: "/../public/assets/aula1.jpg"
+    url: "/../../public/assets/aula1.jpg"
   },
   {
     id: 2,
-    url: "/../public/assets/aula2.jpg"
+    url: "/../../public/assets/aula2.jpg"
   },
   {
     id: 3,
-    url: "/../public/assets/aula3.jpg"
+    url: "/../../public/assets/aula3.jpg"
   },
   {
     id: 4,
-    url: "/../public/assets/aula4.jpg"
+    url: "/../../public/assets/aula4.jpg"
   }
 ]
 
