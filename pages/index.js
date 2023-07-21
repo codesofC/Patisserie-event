@@ -1,11 +1,55 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import BrandSection from '@/components/BrandSection'
+import cakeImg from "../public/assets/bolo.png"
+import chefImg from "../public/assets/chef.png"
 
-const inter = Inter({ subsets: ['latin'] })
+
+const classroom = [
+  {
+    id: 1,
+    url: "/../public/assets/aula1.jpg"
+  },
+  {
+    id: 2,
+    url: "/../public/assets/aula2.jpg"
+  },
+  {
+    id: 3,
+    url: "/../public/assets/aula3.jpg"
+  },
+  {
+    id: 4,
+    url: "/../public/assets/aula4.jpg"
+  }
+]
 
 export default function Home() {
+
+  const [timeline, setTimeline] = useState({
+    hour: Number,
+    min: Number,
+    sec: Number
+  })
+  const [timeInicial, setTimeInicial] = useState(50400)
+
+  useEffect(() => {
+    setTimeline(prevState => {
+      return {
+        hour: Math.trunc(timeInicial / 3600),
+        min: Math.trunc((timeInicial % 3600) / 60),
+        sec: Math.trunc((timeInicial % 3600) % 60)
+      }
+    })
+
+    const timeOver = setTimeout(() => {
+      setTimeInicial(timeInicial - 1)
+    }, 1000)
+
+    
+  }, [timeInicial])
+
   return (
     <>
       <Head>
@@ -14,108 +58,104 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <main>
+      <BrandSection />
+        <div>
+          <div className='time-section'>
+            <div className='time-text'>
+              The cakes that sell event starts in:
+            </div>
+            <div className='time-description'>
+              <div>{ timeline.hour < 10 ? '0' : ''}{ timeline.hour } <span>Hours</span> </div>
+              <div> { timeline.min < 10 ? '0' : ''}{ timeline.min } <span>Minutes</span> </div>
+              <div> { timeline.sec < 10 ? '0' : ''}{ timeline.sec } <span>Seconds</span> </div>
+            </div>
+          </div>
+          <div className="details">
+            <h2> start now the right way </h2>
+            <p>
+            Now you will have the opportunity to change your financial and
+             professional life through the luxury artisan cake market and 
+             everything you need to understand to serve the high-end market
+             in your city.
+            </p>
           </div>
         </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+        <section className='event-who'>
+          <div className='img-container'>
+              <Image src={cakeImg} width={200} alt="Cake" />
+          </div>
+          <div className='event-description'>
+            <h2> But tune in, who is this online event for? </h2>
+            <div className='text-description'>
+              <p>
+                For you who are looking to find yourself professionally and have 
+                no knowledge about this market.
+              </p>
+              <p>
+                For you who, due to lack of opportunities in the labor market, 
+                cannot find a new job
+              </p>
+              <p>
+                For you who already work in the confectionery market, 
+                but want to become a professional of extreme quality
+              </p>
+            </div>
+          </div>
+        </section>
+        <div className="classroom">
+          <div className='button-send'>
+            <button> Receive my free access </button>
+          </div>
+          <div className="classroom-details">
+            <h2> Everything you will learn during these 4 days! </h2>
+            <div className="classes">
+              {
+                classroom.map(item => (
+                  <div key={item.id} className='class-item'>
+                    <Image src={item.url} width={1000} height={1000} alt="picture" />
+                    <div className="class-details">
+                      <span>Class { item.id }</span>
+                      <h3> Necessary materials </h3>
+                      <p>
+                        See the minimum you need materials to start baking in your 
+                        own home today.
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
+        <section className='chef-section'>
+          <div className='chef-description'>
+            <h2>Who will deliver you the Change Map</h2>
+            <div>
+              <p>
+                Hello, I'm Mariah, I'm the one who will 
+                help you follow the path to success to become a high-end nomad bakery.
+              </p>
+              <p>
+                I have training in the XYZ areas and I have a postgraduate degree in XYZ, 
+                so I am fully convinced that I have all the necessary knowledge to pass on 
+                to you so that you can also walk your professional and well-paid path.
+              </p>
+              <p>
+                So, enjoy the full 4 days of this online event and free completion. I wait for you!
+              </p>
+            </div>
+          </div>
+          <div className='chefImg-container'>
+              <Image src={chefImg} width={500} height={500} alt="Picture" />
+          </div>
+        </section>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+        <div  className='send-email'>
+          <form action="">
+            <input type={'email'} name='email' placeholder='Enter your email here' />
+            <button type="submit"> Receive my free access </button>
+          </form>
         </div>
       </main>
     </>
