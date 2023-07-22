@@ -9,19 +9,19 @@ import chefImg from "../public/assets/chef.png"
 const classroom = [
   {
     id: 1,
-    url: "/../public/assets/aula1.jpg"
+    url: "https://images.pexels.com/photos/6578899/pexels-photo-6578899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 2,
-    url: "/../public/assets/aula2.jpg"
+    url: "https://images.pexels.com/photos/7525171/pexels-photo-7525171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 3,
-    url: "/../public/assets/aula3.jpg"
+    url: "https://images.pexels.com/photos/7525189/pexels-photo-7525189.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 4,
-    url: "/../public/assets/aula4.jpg"
+    url: "https://images.pexels.com/photos/7810768/pexels-photo-7810768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   }
 ]
 
